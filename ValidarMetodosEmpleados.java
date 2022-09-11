@@ -361,7 +361,7 @@ public class ValidarMetodosEmpleados {
 	 */
 	// Método que comprueba si la identificación está en la lista. Si devuelve
 	// "verdadero"
-	public static boolean checkID(int id, ArrayList<Clientes> list) {
+	public static boolean checkID(int id, ArrayList<Empleados> list) {
 		boolean check = false;
 
 		// bucle que ejecuta la lista en busca de la identificación
