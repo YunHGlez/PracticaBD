@@ -16,10 +16,11 @@ public class Empleados {
 	private String edad;
 	private String direccion;
 	private String email;
+    private String password;
     private String salario;
 	
     public Empleados(int id, String apelldioPaterno, String apellidoMaterno, String nombre, String genero, String fechadeNacimiento, 
-                    String edad, String direccion, String email, String salario) {
+                    String edad, String direccion, String email, String password, String salario) {
             this.id = id;
             this.apellidoPaterno = apelldioPaterno;
             this.apellidoMaterno = apellidoMaterno;
@@ -29,6 +30,7 @@ public class Empleados {
             this.edad = edad;
             this.direccion = direccion;
             this.email = email;
+            this.password = password;
             this.salario = salario;
          }
     
@@ -60,6 +62,9 @@ public class Empleados {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+    public void setPassword(String password) {
+        this.password = password;
     }
     public void setSalario(String salario) {
         this.salario = salario;
@@ -133,6 +138,14 @@ public class Empleados {
      /*
       * @return String
       */
+      public String getPassword() {
+        return this.password;
+     }
+
+
+     /*
+      * @return String
+      */
      public String getSalario() {
         return this.salario;
      }
@@ -146,8 +159,8 @@ public class Empleados {
 		String s = "ID Empleado: " + this.id + "\n" + "Nombre: " + this.nombre + "\n" + "Apellido Paterno: "
 				+ this.apellidoPaterno + "\n" + "Apellido Materno: " + this.apellidoMaterno + "\n"
 				+ "Genero: " + this.genero + "\n" + "Fecha de Nacimiento" + this.fechadeNacimiento + "\n" + "Edad: " + this.edad
-				+ "\n" + "Direccion: " + this.direccion + "\n" + "E-mail: " + this.email + "\n" + "\n" + "Salario: " + this.salario
-				+ " salario" + "\n";
+				+ "\n" + "Direccion: " + this.direccion + "\n" + "E-mail: " + this.email + "\n" + "Password: " + this.password
+				+ "\n" + "\n" + "Salario: " + this.salario + " salario" + "\n";
 		return s;
     }
 }
