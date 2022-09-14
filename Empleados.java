@@ -18,9 +18,9 @@ public class Empleados {
 	private String email;
     private String password;
     private String salario;
-	
+	private String rol;
     public Empleados(int id, String apelldioPaterno, String apellidoMaterno, String nombre, String genero, String fechadeNacimiento, 
-                    String edad, String direccion, String email, String password, String salario) {
+                    String edad, String direccion, String email, String password, String salario, String rol) {
             this.id = id;
             this.apellidoPaterno = apelldioPaterno;
             this.apellidoMaterno = apellidoMaterno;
@@ -32,6 +32,7 @@ public class Empleados {
             this.email = email;
             this.password = password;
             this.salario = salario;
+            this.rol = rol;
          }
     
 
@@ -68,6 +69,9 @@ public class Empleados {
     }
     public void setSalario(String salario) {
         this.salario = salario;
+    }
+    public void setRol(String rol) {
+        this.rol = rol;
     }    
     /*
      * getters
@@ -150,6 +154,10 @@ public class Empleados {
         return this.salario;
      }
 
+     public String getRol() {
+        return this.rol;
+     }
+
      /**
 	 * @return String
 	 */
@@ -160,7 +168,7 @@ public class Empleados {
 				+ this.apellidoPaterno + "\n" + "Apellido Materno: " + this.apellidoMaterno + "\n"
 				+ "Genero: " + this.genero + "\n" + "Fecha de Nacimiento" + this.fechadeNacimiento + "\n" + "Edad: " + this.edad
 				+ "\n" + "Direccion: " + this.direccion + "\n" + "E-mail: " + this.email + "\n" + "Password: " + this.password
-				+ "\n" + "\n" + "Salario: " + this.salario + " salario" + "\n";
+				+ "\n" + "Salario: " + this.salario + " salario" + "\n" + "Rol: " + this.rol + "\n";
 		return s;
     }
 }
