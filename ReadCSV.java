@@ -183,6 +183,64 @@ public class ReadCSV {
     }
 
 
+    /**
+     * Método que consulta la información de un empleado.
+     * @param id identificador único.
+     * @param arrEmp arrayList de empleados
+     */
+    public static void consultaEmpleado(int id, ArrayList<Empleados> arrEmp){
+        boolean encontrado = false;
+        for( int i = 0; i< arrEmp.size(); i++){
+            Empleados emp = arrEmp.get(i);
+            if(emp.getId() == id){
+                System.out.println(emp);
+                encontrado = true;
+            }
+        }
+        if(!encontrado){
+            System.out.println("No se encontró el empleado");
+        }
+    }
+
+    /**
+     * Método que consulta la información de un vivero.
+     * @param id identificador único.
+     * @param arrVive arrayList de viveros.
+     */
+    public static void consultaVivero(int id, ArrayList<Vivero> arrVive){
+        boolean encontrado = false;
+        for( int i = 0; i< arrVive.size(); i++){
+            Vivero viv = arrVive.get(i);
+            if(viv.getId() == id){
+                System.out.println(viv);
+                encontrado = true;
+            }
+        }
+        if(!encontrado){
+            System.out.println("No se encontró el empleado");
+        }
+    }
+
+    /**
+     * Método que consulta la información de una planta.
+     * @param id identificador único.
+     * @param arrPla arrayList de plantas.
+     */
+    public static void consultaPlanta(int id, ArrayList<Planta> arrPla){
+        boolean encontrado = false;
+        for( int i = 0; i< arrPla.size(); i++){
+            Planta pl = arrPla.get(i);
+            if(pl.getId() == id){
+                System.out.println(pl);
+                encontrado = true;
+            }
+        }
+        if(!encontrado){
+            System.out.println("No se encontró el empleado");
+        }
+    }
+
+
     
     public static void main(String[] args) {
         ArrayList<Planta> planta = leePlantaCSV("C:/Users/Yun/Desktop/PracticaBD-menus/src/Plantas.csv");
