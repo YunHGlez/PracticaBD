@@ -125,13 +125,77 @@ public class ReadCSV {
         return vive;
     }
 
+    /**
+     * Método eliminar una planta por medio de su id.
+     * @param id
+     * @param arrPl
+     */
+    public static void eliminaPlanta(int id, ArrayList<Planta> arrPl){
+        boolean encontrado = false;
+        for( int i = 0; i< arrPl.size(); i++){
+            Planta pl = arrPl.get(i);
+            if(pl.getId() == id){
+                arrPl.remove(i);
+                encontrado = true;
+            }
+        }
+        if(!encontrado){
+            System.out.println("No se encontró la planta");
+        }
+    }
+
+    /**
+     * Método eliminar un empleado por medio de su id.
+     * @param id
+     * @param arrEmp
+     */
+    public static void eliminaEmpleado(int id, ArrayList<Empleados> arrEmp){
+        boolean encontrado = false;
+        for( int i = 0; i< arrEmp.size(); i++){
+            Empleados pl = arrEmp.get(i);
+            if(pl.getId() == id){
+                arrEmp.remove(i);
+                encontrado = true;
+            }
+        }
+        if(!encontrado){
+            System.out.println("No se encontró el empleado");
+        }
+    }
+
+    /**
+     * Método eliminar un Vivero por medio de si id.
+     * @param id
+     * @param arrViv
+     */
+    public static void eliminaVivero(int id, ArrayList<Vivero> arrViv){
+        boolean encontrado = false;
+        for( int i = 0; i< arrViv.size(); i++){
+            Vivero pl = arrViv.get(i);
+            if(pl.getId() == id){
+                arrViv.remove(i);
+                encontrado = true;
+            }
+        }
+        if(!encontrado){
+            System.out.println("No se encontró el vivero");
+        }
+    }
+
+
     
     public static void main(String[] args) {
         ArrayList<Planta> planta = leePlantaCSV("C:/Users/Yun/Desktop/PracticaBD-menus/src/Plantas.csv");
         ArrayList<Empleados> empleado =  leeEmpleadoCSV("C:/Users/Yun/Desktop/PracticaBD-menus/src/Empleados.csv");
         ArrayList<Vivero> vivero =  leeViveroCSV("C:/Users/Yun/Desktop/PracticaBD-menus/src/Viveros.csv");
+        
         System.out.println(planta);
         System.out.println(vivero);
         System.out.println(empleado);
+
+        //eliminaVivero(1, vivero);
+        //System.out.println(vivero);
+        //System.out.println(vivero);
+        //System.out.println(empleado);
     }
 }
