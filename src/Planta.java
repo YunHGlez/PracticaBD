@@ -9,8 +9,8 @@ public class Planta{
     private int intervaloRiego;
     private int cantidad; /* Por invernadero */
     private double precio;
-    private int id;
-    public Planta (int id, String nombre, String genero, String cuidados, String sustrato,String luz,
+    private String id ;
+    public Planta (String id, String nombre, String genero, String cuidados, String sustrato,String luz,
                     String fechaGerminacion, int intervaloRiego, int cantidad, double precio) {
         this.id = id;
         this.nombre = nombre;
@@ -24,11 +24,11 @@ public class Planta{
         this.precio = precio;
     }
 
-    public void setId(int id){
+    public void setId(String id){
         this.id = id;
     }
 
-    public int getId(){
+    public String getId(){
         return id;
     }
     public void setNombre(String nombre){
@@ -108,7 +108,7 @@ public class Planta{
      * @return una representación en cadena de la planta.
      */
     @Override public String toString() {
-        String representacion = String.format("Id: %d\n"+
+        String representacion = String.format("Id: %s\n"+
                                               "Nombre: %s\n" +
                                               "Genero: %s\n" +
                                               "Cuidados: %s\n" +
@@ -136,7 +136,7 @@ public class Planta{
             return false;
         Planta planta = (Planta)objeto;
         return
-        id == planta.id &&
+        id.equals(planta.id) &&
         nombre.equals(planta.nombre) &&
         genero.equals(planta.genero) &&
         cuidados.equals(planta.cuidados) &&
@@ -156,7 +156,7 @@ public class Planta{
      * @return una línea de texto con los atributos de la planta separados por comas.
      */
     @Override public String serializa() {
-        String serializado =  String.format("%d,%2.2f,%d,%s,%s,%s,%s,%s,%s,%d,%d",
+        String serializado =  String.format("%s,%2.2f,%d,%s,%s,%s,%s,%s,%s,%d,%d",
                                             id, precio, cantidad, nombre, genero, cuidados,
                                             sustrato, luz, fechaGerminacion, intervaloRiego);
         return serializado;
@@ -178,14 +178,14 @@ public class Planta{
         if (parteslinea.length != 10)
             throw new ExcepcionLineaInvalida();
         try {
-            setId(int.parseInt(parteslinea[0]));
+
             setPrecio(Double.parseDouble(parteslinea[1]));
             setCantidad(Integer.parseInt(parteslinea[2]));
             setIntervaloRiego(Integer.parseInt(parteslinea[9]));
         } catch (Exception NumberFormatException) {
             throw new ExcepcionLineaInvalida();
         }
-
+        setId(parteslinea[0]));
         setNombre(parteslinea[3]);
         setGenero(parteslinea[4]);
         setCuidados(parteslinea[5]);

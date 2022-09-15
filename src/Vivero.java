@@ -115,7 +115,7 @@ public class Vivero{
         if (parteslinea.length != 5)
             throw new ExcepcionLineaInvalida();
         try {
-            setId(int.parseInt(parteslinea[0]));
+            setId(Integer.parseInt(parteslinea[0]));
             setTelefono(Double.parseDouble(parteslinea[4]));
         } catch (Exception NumberFormatException) {
             throw new ExcepcionLineaInvalida();
