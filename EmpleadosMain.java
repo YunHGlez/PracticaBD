@@ -78,7 +78,7 @@ public class EmpleadosMain {
 				// nombre, curp, direccion, genero, fecha de nacimiento, edad, email, password,
 				// salario)
 				Empleados s = new Empleados(Integer.parseInt(data[0]), data[1], data[2], data[3], data[4], data[5], data[6],
-						                    data[7], data[8], data[9], data[10]);
+						                    data[7], data[8], data[9], data[10], data[11]);
 				// Agregar a ArrayList
 				list.add(s);
 				// Sigue leyendo líneas
@@ -206,6 +206,7 @@ public class EmpleadosMain {
 				bw.write(list.get(x).getEmail() + ";");
 				bw.write(list.get(x).getPassword() + ";");
 				bw.write(list.get(x).getSalario() + ";");
+				bw.write(list.get(x).getRol() + ";");
 
 				bw.write(System.getProperty("line.separator"));
 			}
@@ -247,6 +248,7 @@ public class EmpleadosMain {
 		String email = " ";
 		String password = " ";
 		String salario = " ";
+		String rol = " ";
 		String confirm = " ";
 		// bucle que le pedirá al usuario que ingrese datos de Empleados
 		do {
@@ -394,7 +396,7 @@ public class EmpleadosMain {
 					if (confirm.equalsIgnoreCase("Y")) {
 						// Crea un objeto Empleados y establece el valor de los atributos
 						Empleados s = new Empleados(id, apellidoPaterno, apellidoMaterno, nombre, genero, fechadeNacimiento,
-								edad, direccion, email, password, salario);
+								edad, direccion, email, password, salario, rol);
 						// Agregar a ArrayList (lista)
 						list.add(s); // mostrar mensaje de que Empleados se eliminó con éxito y una línea vacía
 						System.out.println("****** Empleado Agregado exitosamente !!! ******");
@@ -602,6 +604,7 @@ public class EmpleadosMain {
 		String email = " ";
 		String password = " ";
 		String salario = " ";
+		String rol = " ";
 		String confirm = " ";
 
 		// mostrar detalles de Empleados por número de Empleados
@@ -670,7 +673,8 @@ public class EmpleadosMain {
 					System.out.println("| 8 - Email del Empleado                          |");
 					System.out.println("| 9 - Password del Empleado                       |");
 					System.out.println("| 10 - Salario del Empleado                       |");
-					System.out.println("| 11 - GUARDAR CAMBIOS y volver a Menu principal |");
+					System.out.println("| 11 - Rol del Empleado                       |");
+					System.out.println("| 12 - GUARDAR CAMBIOS y volver a Menu principal |");
 					System.out.println("| 0 - Regresar al menu principal                 |");
 					System.out.println("*****************************************");
 					data = br.readLine();
@@ -786,7 +790,18 @@ public class EmpleadosMain {
 							} while (salario.isEmpty());
 							System.out.println();
 							break;
+						// Pedirle al usuario que ingrese el Rol del Empleado si la opción
+						// es 11
 						case "11":
+						do {
+							rol = ValidarMetodosEmpleados.getOnlyLetters(
+									"Ingresa el rol del Empleado: ");
+							ValidarMetodosEmpleados.emptyField(rol);
+							// Si el campo está vacío, solicite al usuario que ingrese nuevamente
+						} while (salario.isEmpty());
+						System.out.println();
+						break;
+						case "12":
 							do {
 								System.out.println("Confirmas los cambios realizados? Y/N");
 								try {
@@ -810,6 +825,7 @@ public class EmpleadosMain {
 									emp.setEmail(email);
 									emp.setPassword(password);
 									emp.setSalario(salario);
+									emp.setRol(rol);;
 									// muestra el mensaje de que Empleados se eliminó correctamente y una línea vacía
 									System.out.println("Empleados.csv actualizado correctamente !!!");
 									System.out.println();
