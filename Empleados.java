@@ -171,4 +171,48 @@ public class Empleados {
 				+ "\n" + "Salario: " + this.salario + " salario" + "\n" + "Rol: " + this.rol + "\n";
 		return s;
     }
+
+    /**
+     * Regresa los empleados serializado en formato csv en una línea de texto. La 
+     * línea de texto que este método regresa debe ser aceptada por el método 
+     * {@link Empleados#deserializa}.
+     * @return una línea de texto con los atributos de la planta separados por comas.
+     */
+    @Override public String serializa() {
+        String serializado =  String.format("%2.2f,%d,%s,%s,%s,%s,%s,%s,%s,%s,%s",
+                                            id, apellidoPaterno, apellidoMaterno, nombre, genero,
+                                            fechadeNacimiento, edad, direccion, email, password,
+                                            salario, rol);
+        return serializado;
+    }
+
+    /**
+     * Deserializa una línea de texto en las propiedades de la planta. La
+     * serialización producida por el método {@link Planta#serializa} debe
+     * ser aceptada por este método.
+     * @param linea la línea a deserializar.
+     * @throws ExcepcionLineaInvalida si la línea recibida es nula, vacía o no
+     *         es una serialización válida de una planta.
+     */
+    public void deserializa(String linea) {
+        if (linea == null)
+            throw new ExcepcionLineaInvalida();
+        String linealimpia = linea.trim();
+        String [] parteslinea = linealimpia.split("\t");
+        if (parteslinea.length != 12)
+            throw new ExcepcionLineaInvalida();
+        try {
+            setPrecio(Double.parseDouble(parteslinea[0]));
+            setCantidad(Integer.parseInt(parteslinea[1]));
+            setIntervaloRiego(Integer.parseInt(parteslinea[9]));
+        } catch (Exception NumberFormatException) {
+            throw new ExcepcionLineaInvalida();
+        }
+        setNombre(parteslinea[2]);
+        setGenero(parteslinea[3]);
+        setCuidados(parteslinea[4]);
+        setSustrato(parteslinea[5]);
+        setLuz(parteslinea[6]);
+        setFechaGerminacion(parteslinea[7]);
+    }
 }
