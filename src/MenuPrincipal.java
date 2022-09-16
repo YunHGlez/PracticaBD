@@ -78,7 +78,7 @@ public class MenuPrincipal {
     int a = getInt(5,"¿Qué deseas realizar? \n Escribe 0 para agregar un nuevo VÍVERO \n Escribe 1 para consultar un VÍVERO \n Escribe 2 para editar un VÍVERO \n Escribe 3 para eliminar un VÍVERO \n Escribe 4 para guardar cambios o regresar", "Error, eso no es una opción")
     switch (a){
       case (0):
-      Scanner scVivero = new Scanner(System.in); 
+      Scanner scVivero1 = new Scanner(System.in); 
       int id;
       String nombreVivero;
       String direccion;
@@ -97,7 +97,7 @@ public class MenuPrincipal {
       nombreVivero = getOnlyLettersSpace("¿Cuál es el nombre del vivero?: ");
       direccion = getOnlyLettersSpaceNumber("¿Cuál es la direccion?: ");
       System.out.println("¿Cuál es el número telefónico?");
-      numero = scVivero.nextLong();
+      numero = scVivero1.nextLong();
       fechaApertura = getFechaDeNacimiento("¿Cuál fue la fecha de apertura (Formato DD/MM/AAAA)?: ");
       
 
@@ -114,9 +114,9 @@ public class MenuPrincipal {
       break;
 
       case (3):
-        Scanner scVivero = new Scanner(System.in);
+        Scanner scVivero3 = new Scanner(System.in);
         System.out.println("¿Cuál es el id del vivero que deseas eliminar?");
-        id = scVivero.nextInt();
+        id = scVivero3.nextInt();
         ReadCSV.eliminaEmpleado(id, viveros);
       break;
       
@@ -137,7 +137,7 @@ public class MenuPrincipal {
     
     switch (a){
       case (0):
-        Scanner scEmpleado = new Scanner(System.in); 
+        Scanner scEmpleado1 = new Scanner(System.in); 
         int id;
 	      String apellidoPaterno;
 	      String apellidoMaterno;
@@ -176,10 +176,10 @@ public class MenuPrincipal {
         direccion = getOnlyLettersSpaceNumber("¿Cuál es la direccion del empleado?: ");
         email = getEmail("¿Cuál es el email?: ");
         System.out.println("¿Cuál es el número telefónico?");
-        numero = scEmpleado.nextLong();
+        numero = scEmpleado1.nextLong();
         do{
           flag = false;
-          salario = getInt(10000000, "¿Cuál es el salario del empleado?: " , "Error, eso no es un número");
+          salario = getInt(10000000, "¿Cuál es el salario del empleado (Solo números)?: " , "Error, eso no es un número");
           //Verifica que es un entero
           if(salario % 1 == 0){
             flag = true;
@@ -200,9 +200,9 @@ public class MenuPrincipal {
       break;
 
       case (3):
-        Scanner scEmpleado = new Scanner(System.in);
+        Scanner scEmpleado3 = new Scanner(System.in);
         System.out.println("¿Cuál es el id del empleado que deseas eliminar?");
-        id = scEmpleado.nextInt();
+        id = scEmpleado3.nextInt();
         ReadCSV.eliminaEmpleado(id, empleados);
       break;
 
@@ -216,13 +216,14 @@ public class MenuPrincipal {
   }
   
   public static void menuPlantas(){
+    boolean flag;
     //Falta el dir
     ArrayList<Planta> plantas = ReadCSV.leePlantaCSV("CSV");
     // getInt esta definido hasta abajo y dice que hace
     int a = getInt(5,"¿Qué deseas realizar? \n Escribe 0 para agregar una nueva PLANTA \n Escribe 1 para consultar una PLANTA \n Escribe 2 para editar una PLANTA \n Escribe 3 para eliminar una PLANTA \n Escribe 4 para guardar cambios o regresar", "Error, eso no es una opción")
     switch (a){
       case (0):
-      Scanner scPlanta = new Scanner(System.in); 
+      Scanner scPlanta1 = new Scanner(System.in);
       int id;
       String nombre;
       String genero;
@@ -236,7 +237,7 @@ public class MenuPrincipal {
 
       do{
         flag = false;
-        id = getInt(10000000000, "¿Cuál es el ID de la planta?: " , "Error, eso no es un número");
+        id = getInt(1000000, "¿Cuál es el ID de la planta?: " , "Error, eso no es un número");
         //Verifica que es un entero
         if(id % 1 == 0){
           flag = true;
@@ -250,7 +251,7 @@ public class MenuPrincipal {
       fechaGerminacion = getOnlyLettersSpaceNumber("¿Cuándo germina?: ");
       do{
         flag = false;
-        intervaloRiego = getInt(10000000000, "¿Cuál es el intervalo de riego?: " , "Error, eso no es un número");
+        intervaloRiego = getInt(1000000, "¿Cuál es el intervalo de riego?: " , "Error, eso no es un número");
         //Verifica que es un entero
         if(intervaloRiego % 1 == 0){
           flag = true;
@@ -258,7 +259,7 @@ public class MenuPrincipal {
       }while(flag == false);
       do{
         flag = false;
-        cantidad = getInt(10000000000, "¿Qué cantidad hay?: " , "Error, eso no es un número");
+        cantidad = getInt(1000000, "¿Qué cantidad hay?: " , "Error, eso no es un número");
         //Verifica que es un entero
         if(cantidad % 1 == 0){
           flag = true;
@@ -281,10 +282,10 @@ public class MenuPrincipal {
       break;
 
       case (3):
-        Scanner scPlanta = new Scanner(System.in);
+        Scanner scPlanta3 = new Scanner(System.in);
         System.out.println("¿Cuál es el id de la planta que deseas eliminar?");
-        int id = scPlanta.nextInt();
-        ReadCSV.eliminaEmpleado(id, plantas);
+        id = scPlanta3.nextInt();
+        ReadCSV.eliminaPlanta(id, plantas);
       break;
 
       case (4):
@@ -300,7 +301,9 @@ public class MenuPrincipal {
     *getInt recibe un entero, dos cadenas y devuelve un entero, si lo que el usuario ponga no es un entero, devolverá error
     * hasta que se le pase un entero, es para verificar si es un entero o no. La primera cadena es el mensaje
     * que queremos que el usuario vea y la segunda es el error. el entero que recibe es la cota superior.
-    *@param el numero entero
+    *@param d cota superior
+    *@param b mensaje normal
+    *@param c mensaje de error
     *@return el entero
   */
   public int getInt(int d, String b,String c){
@@ -318,6 +321,7 @@ public class MenuPrincipal {
       System.out.println(c);   
     }
     }while(z == false);
+    sc.close();
     return a;
   }
 
