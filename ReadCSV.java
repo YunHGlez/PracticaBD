@@ -217,7 +217,7 @@ public class ReadCSV {
             }
         }
         if(!encontrado){
-            System.out.println("No se encontró el empleado");
+            System.out.println("No se encontró el vivero");
         }
     }
 
@@ -236,7 +236,7 @@ public class ReadCSV {
             }
         }
         if(!encontrado){
-            System.out.println("No se encontró el empleado");
+            System.out.println("No se encontró la planta");
         }
     }
 
